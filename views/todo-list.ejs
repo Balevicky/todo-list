@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-list</title>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <form method="POST" action="/task">
+        <input type="text" name="task" placeholder="Nouvelle taâhe" autofocus required>
+        <button type="submit">Ajouter</button>
+    </form>
+    <ul>
+        <% tasks .map((task,index)=>{ %>
+
+            <li>
+                <!-- <strong>
+                    <%=index %>
+                </strong> -->
+                <% if (task.done) { %>
+                    <s>
+                        <%=task.title%> | <a href="/task/<%=index %>/delete">supprimer</a>
+                    </s>
+
+                    <%}else { %>
+
+
+                        <%=task.title%> | <a href="/task/<%= index %>/done">Terminé</a>
+                            <% } %>
+            </li>
+
+
+            <% }) %>
+    </ul>
+</body>
+
+</html>
